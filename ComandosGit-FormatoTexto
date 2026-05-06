@@ -1,4 +1,4 @@
-## Comandos Git
+Comandos Git
 git status                -> ver que archivos cambiaron
 git add .                 -> Preparar todos los cambios
 git add archivo.java      -> Preparar un archivo específico
@@ -9,13 +9,13 @@ git log                   -> Ver el historial de commits
 git diff                  -> Ver exactamente qué líneas cambiaron
 git restore archivo.java  -> Deshacer cambios en un archivo
 
-## Protocolo git
+Protocolo git
 1. git pull para bajar los cambios hechos.
 2. al finalizar de trabajar, git add . para preparar los cambios
 3. git commit -m "mensaje" para guardar e indicar que cambios se hicieron (importante para mantener el trabajo organizado)
 4. git push para enviar los cambios al repositorio
 
-## Formato texto
+Formato texto
 
 # Titulo 
 ## Seccion
