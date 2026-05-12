@@ -109,7 +109,7 @@ classDiagram
 
     %% Relaciones de composición (rombo relleno *)
     %% Tablero crea y posee las Casillas
-    Tablero "1" *-- "0..*" Casilla : contiene
+    Tablero "1" *-- "1..*" Casilla : contiene
     
     %% Buscaminas crea el Tablero
     Buscaminas "1" *-- "1" Tablero : crea
@@ -135,10 +135,10 @@ classDiagram
 ### Composición (Rombo Relleno ♦)
 Las siguientes relaciones son de **composición**, es decir, el objeto hijo **NO puede existir** sin el objeto padre:
 
-- **Tablero → Casilla** (1 a 0..*)
+- **Tablero → Casilla** (1 a 1..*)
   - Tablero CREA y es responsable de todas sus Casillas
   - Si el Tablero se destruye, sus Casillas desaparecen
-  - Cardinalidad: Un tablero contiene múltiples casillas
+  - Cardinalidad: Un tablero siempre contiene al menos 16 casillas (mínimo 4×4)
 
 - **Buscaminas → Tablero** (1 a 1)
   - Buscaminas CREA el Tablero en su constructor
