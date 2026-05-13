@@ -25,15 +25,32 @@ public class Partida{
         return victoria;
     }
 
+    public int getDificultad(){
+        return dificultad;
+    }
+
+    public long getTiempo(){
+        return tiempo;
+    }
+
+    public int getMinasEnontradas(){
+        return minas_encontradas;
+    }
+
 
     /*
     Para la implementacion del bubbleSort por dificultad y minas encontradas
     1. Las partidas se organizan primero de 0 a 3 segun las dificultades definidas.
     2. Despues se comparan la cantidad de minas encontradas, organizando de mayor a menor
     */
+
+
     public boolean minasEncontradasCmp(Partida that){
-        if (this.dificultad < that.dificultad) return true;
+        if (this.dificultad == that.dificultad){
         return this.minas_encontradas > that.minas_encontradas;
+        } else {
+            return this.dificultad < that.dificultad;
+        }
     }
 
 
@@ -42,12 +59,14 @@ public class Partida{
     1. Las partidas se organizan primero de 0 a 3 segun las dificultades definidas.
     2. Despues se comparan los tiempos.
     */
-    public boolean tiempoCmp(Partida that){
-        if (this.dificultad < that.dificultad) return true;
-        return this.tiempo < that.tiempo;
-    }
 
-    
+    public boolean tiempoCmp(Partida that){
+        if (this.dificultad == that.dificultad){
+        return this.tiempo < that.tiempo;
+        } else {
+            return this.dificultad < that.dificultad;
+        }
+    }
 
 
     public void informacionPartida(){

@@ -57,6 +57,7 @@ classDiagram
         -Tablero t
         -int dificultad
         -long tiempoPartida
+        +{static} DIFICULTADES[] String
         +Buscaminas()
         +getTablero() Tablero
         +getDificultad() int
@@ -75,6 +76,9 @@ classDiagram
         -boolean victoria
         +Partida(int, String, int, long, int)
         +getVictoria() boolean
+        +getDificultad() int
+        +getTiempo() long
+        +getMinasEnontradas() int
         +minasEncontradasCmp(Partida) boolean
         +tiempoCmp(Partida) boolean
         +informacionPartida()
@@ -87,16 +91,29 @@ classDiagram
         -int partidasGanadas
         +RegistroPartidas()
         +getRegistro() ArrayList
+        +getPartidasJugadas() int
+        +getPartidasGanadas() int
+        +getPartidasPerdidas() int
         +anadirPartida(Partida)
         +swap(int, int)
+        +imprimirRegistro()
+        +imprimirVictorias()
+        +imprimirVictorias(int)
         +timeSort()
         +minasEncontradasSort()
+        +buscarPorTiempo(long, int) int
+        +buscarPorMinas(int, int) int
+        +findLeft(int) int
+        +findRight(int) int
     }
 
     class Sesion {
         -Scanner in
         -RegistroPartidas registro
         +sesion()
+        +informacionPartidas()
+        +buscarPartida()
+        +mostrarPartidasGanadas()
         +reglas()
         +menuPrincipal() int
         +titulo()

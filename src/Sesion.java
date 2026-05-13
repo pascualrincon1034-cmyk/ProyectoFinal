@@ -9,12 +9,13 @@ public class Sesion{
     public void sesion(){
         int accion = 0;
         titulo();
-        limpiarConsola();
+
         do {
-            System.out.println();
-            accion = menuPrincipal();
             limpiarConsola();
+            accion = menuPrincipal();
             if (accion == 1){
+                limpiarConsola();
+
                 Buscaminas b = new Buscaminas();
                 b.playBuscaminas();
                 System.out.println("              [ Presiona ENTER para volver ]");
@@ -29,7 +30,7 @@ public class Sesion{
                 reglas();
 
             } else if (accion == 3){
-                
+                informacionPartidas();
 
             }
         } while (accion != 4);
@@ -39,7 +40,155 @@ public class Sesion{
 
     }
 
+    public void informacionPartidas(){
+        limpiarConsola();
+        String[] acciones = {"1. Mostrar todas las partidas", "2. Mostrar partidas ganadas", "3. Buscar partida", "4. Volver"};
+        int accion = 0;
+        do {
+            System.out.printf("Partidas jugadas: %d\tPartidas ganadas: %d\tPartidas perdidas: %d\n", 
+            registro.getPartidasJugadas(), registro.getPartidasGanadas(), registro.getPartidasPerdidas());
+
+
+            for (String s: acciones){
+                System.out.print(s + "\t");
+            }
+            
+            do {
+                System.out.print("\nSeleccione una accion: ");
+                accion = in.nextInt();
+            } while (accion > 4 || accion < 1);
+
+            System.out.println();
+
+            if (accion == 1){
+                registro.imprimirRegistro();
+                System.out.println();
+                System.out.println("[ Presiona ENTER para volver ]");
+                in.nextLine();
+                in.nextLine();
+
+            } else if (accion == 2){
+                mostrarPartidasGanadas();
+            } else if (accion == 3){
+                buscarPartida();
+            }
+
+
+        } while (accion != 4);
+    }
+
+    public void buscarPartida(){
+
+        for (int i = 0; i < 4; i++){
+            System.out.printf("%d: %s.   ", i, Buscaminas.DIFICULTADES[i]);
+        }
+
+        System.out.println();
+        System.out.print("Ingrese un numero: ");
+        int n = in.nextInt();
+        while (n > 3 || n < 0){
+            System.out.print("Ups! Ingresa una dificultad valida: ");
+            n = in.nextInt();
+        }
+
+        System.out.println("\n1. Buscar por tiempo\t2. Buscar por minas encontradas");
+
+        int accion;
+
+        do {
+            System.out.print("\nSeleccione una accion: ");
+            accion = in.nextInt();
+        } while (accion > 2 || accion < 1);
+
+        if (accion == 1){
+            System.out.print("\nIngrese el tiempo: ");
+            int tiempo = in.nextInt();
+            int index = registro.buscarPorTiempo(tiempo, n);
+            if (index == -1){
+                System.out.println("\nUps... Parece que no existe tal partida....");
+            } else {
+                registro.getRegistro().get(index).informacionPartida();
+            }
+            System.out.println();
+            System.out.println("[ Presiona ENTER para volver ]");
+            in.nextLine();
+            in.nextLine();
+        }
+
+        if (accion == 2){
+            System.out.print("\nIngrese la cantidad de minas encontradas: ");
+            int minas = in.nextInt();
+            int index = registro.buscarPorMinas(minas, n);
+            if (index == -1){
+                System.out.println("\nUps... Parece que no existe tal partida....");
+            } else {
+                registro.getRegistro().get(index).informacionPartida();;
+            }
+            System.out.println();
+            System.out.println("[ Presiona ENTER para volver ]");
+            in.nextLine();
+            in.nextLine();
+        }
+
+
+
+        
+    }
+
+    public void mostrarPartidasGanadas(){
+        
+        int accion;
+        
+        if (registro.getPartidasGanadas() == 0){
+            System.out.println("No hay partidas ganadas :(");
+            System.out.println();
+            return;
+        }
+
+        System.out.println("1. Mostrar todas\t2.Mostrar ganadas por dificultad");
+        do {
+            System.out.print("\nSeleccione una accion: ");
+            accion = in.nextInt();
+        } while (accion > 2 || accion < 1);
+
+        System.out.println();
+
+        if (accion == 1){
+            registro.imprimirVictorias();
+        }
+
+        else {
+
+            System.out.println("Seleccione una dificultad:");
+
+            for (int i = 0; i < 4; i++){
+            System.out.printf("%d: %s.   ", i, Buscaminas.DIFICULTADES[i]);
+            }
+
+            System.out.println();
+            System.out.print("Ingrese un numero: ");
+            int n = in.nextInt();
+            while (n > 3 || n < 0){
+                System.out.print("Ups! Ingresa una dificultad valida: ");
+                n = in.nextInt();
+            }
+
+            registro.minasEncontradasSort();
+            int left = registro.findLeft(n);
+            registro.imprimirVictorias(left);
+
+        }
+
+        System.out.println();
+        
+        System.out.println("[ Presiona ENTER para volver ]");
+        in.nextLine();
+        in.nextLine();
+        
+    }
+
     public void reglas(){
+        limpiarConsola();
         System.out.println("El jugador cuenta con 4 opciones para la creacion de la partida.");
         System.out.println("1. Personalizado, siendo las dimensiones seleccionadas por el jugador");
         System.out.println("Este debe tener en cuenta que las dimensiones minimas son de 4x4 y la cantidad de minas debe ser");
