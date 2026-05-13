@@ -57,7 +57,7 @@ classDiagram
         -Tablero t
         -int dificultad
         -long tiempoPartida
-        +{static} DIFICULTADES String[]
+        +$ DIFICULTADES String[]
         +Buscaminas()
         +getTablero() Tablero
         +getDificultad() int
