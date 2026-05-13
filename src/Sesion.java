@@ -23,7 +23,7 @@ public class Sesion{
                 in.nextLine();
 
                 Partida p = new Partida(b.getDificultad(), b.getTablero().getDimension(), b.getTablero().getMinas(), 
-                b.getTiempoPartida(), b.getTablero().getMinas() - b.getTablero().getMinas_restantes());
+                b.getTiempoPartida(), b.getTablero().getMinas() - b.getTablero().getMinas_restantes(), b.getVictoria());
                 registro.anadirPartida(p);
             
             } else if (accion == 2){
@@ -175,7 +175,8 @@ public class Sesion{
 
             registro.minasEncontradasSort();
             int left = registro.findLeft(n);
-            registro.imprimirVictorias(left);
+            int right = registro.findRight(n);
+            registro.imprimirVictorias(left, right);
 
         }
 

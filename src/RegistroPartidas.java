@@ -26,7 +26,7 @@ public class RegistroPartidas{
         return partidasGanadas;
     }
 
-        public int getPartidasPerdidas(){
+    public int getPartidasPerdidas(){
         return partidasPerdidas;
     }
 
@@ -60,15 +60,13 @@ public class RegistroPartidas{
         }
     }
 
-    public void imprimirVictorias(int left){
+    public void imprimirVictorias(int left, int right){
         minasEncontradasSort();
-        for (int i = left;; i++){
+        for (int i = left; i <= right; i++){
             Partida p = registro.get(i);
             if (p.getVictoria()){
                 p.informacionPartida();
-            } else { 
-                break;
-            }
+            } 
         }
         System.out.println();
     }

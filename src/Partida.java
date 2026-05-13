@@ -7,18 +7,13 @@ public class Partida{
     private int minas_encontradas;
     private boolean victoria;
 
-    public Partida(int dificultad, String dimensiones, int minas, long tiempo, int minas_encontradas){
+    public Partida(int dificultad, String dimensiones, int minas, long tiempo, int minas_encontradas, boolean victoria){
         this.dificultad = dificultad;   
         this.dimensiones = dimensiones;
         this.minas = minas;
         this.tiempo = tiempo;
         this.minas_encontradas = minas_encontradas;
-
-        if (minas_encontradas == minas){
-            victoria = true;
-        } else {
-            victoria = false;
-        }
+        this.victoria = victoria;
     }
 
     public boolean getVictoria(){
@@ -78,6 +73,20 @@ public class Partida{
         System.out.printf("Tiempo: %d minutos y %d segundos\n", tiempo/60, tiempo%60);
         System.out.println("Partida " + (victoria ? "ganada!" : "perdida :("));
         
-
     }
+
+    /*
+    El siguiente metodo permite escribir en el archivo para guardar en el registro la informacion de cada partida 
+    */
+
+    public void guardarPartida(){
+        System.out.println(dificultad);
+        System.out.println(dimensiones);
+        System.out.println(minas);
+        System.out.println(tiempo);
+        System.out.println(minas_encontradas);
+        System.out.println(victoria);
+    }
+
+
 }

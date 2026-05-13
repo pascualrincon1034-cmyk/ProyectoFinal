@@ -12,6 +12,11 @@ public class Buscaminas{
     private Tablero t;
     private int dificultad;
     private long tiempoPartida;
+    private boolean victoria;
+
+    public boolean getVictoria(){
+        return victoria;
+    }
 
     public Tablero getTablero(){
         return t;
@@ -177,16 +182,19 @@ public class Buscaminas{
                 t.printTablero();
             }
 
-        } while(status != 0 && t.getMinas_restantes() > 0);
+
+        } while(status != 0 && (t.getMinas_restantes() != 0 || t.getMinas_restantes() != t.getBanderas()));
         
         if (status == 0){
             t.revelarTablero();
             t.printTablero();
             System.out.println("\nPerdiste");
+            victoria = false;
         } else {
             t.revelarTodo();
             t.printTablero();
             System.out.println("\nGanaste!!!");
+            victoria = true;
         }
 
         Instant end = Instant.now();

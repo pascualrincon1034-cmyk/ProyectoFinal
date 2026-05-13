@@ -188,24 +188,6 @@ Las siguientes relaciones son de **agregación**, es decir, el objeto hijo **PUE
 - `1..*` : Uno o más
 - `0..1` : Cero o uno
 
-## Cómo Visualizar el Diagrama en GitHub
-
-### Opción 1: Visualización Automática en GitHub
-1. Sube este archivo `Diagrama.md` a tu repositorio
-2. GitHub renderizará automáticamente los bloques Mermaid
-3. El diagrama se mostrará visualmente en la vista previa del archivo
-
-### Opción 2: Visualización en VS Code
-1. Instala la extensión **Markdown Preview Mermaid Support**
-2. Abre el archivo `Diagrama.md`
-3. Presiona `Ctrl+Shift+V` para ver la vista previa
-4. El diagrama se renderizará en la vista previa
-
-### Opción 3: Editor Mermaid Online
-1. Ve a https://mermaid.live
-2. Copia el contenido del bloque de código Mermaid
-3. Pégalo en el editor online para visualizarlo
-
 ## Convenciones del Diagrama
 
 ### Tipos de Relaciones
