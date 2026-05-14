@@ -72,16 +72,26 @@ public class Tablero {
     public void printTablero(){
 
         System.out.println();
+        System.out.print("  ");
 
         for (int i = 0; i <= columnas; i++){
             System.out.printf("%-3s", Integer.toString(i));
         }
 
+        System.out.print("\n    ");
+
+        for (int i = 1; i <= columnas; i++){
+            System.out.print("---");
+        }
+
         System.out.println();
+
         int rows = 1;
         
         for (Casilla[] fila: tablero){
-            System.out.printf("%-3s", Integer.toString(rows));
+            System.out.printf("%-2s", Integer.toString(rows));
+            System.out.print(" | ");
+
             rows++;
         
             for (Casilla c: fila){
