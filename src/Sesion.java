@@ -37,6 +37,7 @@ public class Sesion{
 
         limpiarConsola();
         System.out.println("Fin del juego.");
+        System.out.println("Profe pónganos 5");
 
     }
 
